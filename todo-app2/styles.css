@@ -1,0 +1,235 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+    background-color: #3f9bb5;
+    padding: 1rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+nav img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin-top: 100px;
+    text-align: center;
+    min-height: 600px;
+    animation: fadeIn 1s ease-in;
+    flex-grow: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container h1, .container h3 {
+    font-size: 28px;
+    color: #2a398c;
+    margin-bottom: 1rem;
+}
+
+.intro {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #5b78d8, #6e8efb, #a777e3, #d16ba5);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.intro h1 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.intro p {
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+}
+
+.add-task {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#task {
+    width: 70%;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-right: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#task:focus {
+    border-color: #283581;
+    outline: none;
+}
+
+#add-task-button {
+    background-color: #283581;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#add-task-button:hover {
+    background-color: #16205b;
+    transform: scale(1.05);
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#task-list li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+#task-list span {
+    flex-grow: 1;
+    margin-right: 1rem;
+    font-size: 16px;
+}
+
+button.delete-task,
+button.edit-task {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.delete-task:hover,
+button.edit-task:hover {
+    background-color: #d32f2f;
+    transform: scale(1.1);
+}
+
+button.edit-task {
+    background-color: #ff9800;
+    border-radius: 20px;
+}
+
+button.edit-task:hover {
+    background-color: #fb8c00;
+}
+
+footer {
+    background-color: #3f9bb5;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff9800;
+}
+
+.footer-contact a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #ff9800;
+}
