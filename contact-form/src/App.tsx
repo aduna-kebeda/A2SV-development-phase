@@ -10,10 +10,12 @@ type FormData = {
 };
 
 const MyForm: React.FC = () => {
-  const { register, handleSubmit, formState: { errors }, control } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, control, reset } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
+    // Clear form fields after submission
+    reset();
   };
 
   return (
