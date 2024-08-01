@@ -1,0 +1,119 @@
+/* App.css */
+
+/* Removed body styles and applied them to .contact-us instead */
+.contact-us {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px; /* Add some padding to prevent content from touching screen edges */
+}
+
+.contact-form {
+  background: #fff;
+  padding: 40px; /* Increase padding for a more spacious look */
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow for more depth */
+  width: 100%; /* Use full width of parent */
+  max-width: 500px; /* Set max width to ensure it doesn't stretch too wide */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Ensure children take full width */
+  gap: 20px;
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem; /* Adjust font size for better readability */
+}
+
+.contact-form div {
+  margin-bottom: 1rem; /* Ensure there's space between input fields */
+}
+
+
+.contact-form input {
+  width: 100%; /* Ensure input fields take full width */
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  margin-bottom: 0.5rem; /* Ensure input field and error message have space */
+}
+
+.contact-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form .button-container {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 1rem; /* Add margin to separate button from the last input field */
+}
+.contact-form textarea {
+  width: 100%; /* Ensure textarea takes full width */
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  margin-bottom: 0.5rem; /* Ensure textarea and error message have space */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+.contact-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form textarea.error {
+  border-color: #ff0000;
+}
+
+.contact-form textarea.error:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+.contact-form button {
+  padding: 0.75rem;
+  background-color: #043d79;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px;
+}
+
+.contact-form button:hover {
+  background-color: #032b55;
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.contact-form p {
+  color: #ff0000;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.contact-form input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.contact-form input.error {
+  border-color: #ff0000;
+}
+
+.contact-form input.error:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
