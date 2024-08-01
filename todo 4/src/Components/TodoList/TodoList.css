@@ -1,0 +1,120 @@
+/* Todo List Styles */
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.todo-list h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    background-color: #ffffff; /* Changed background color */
+}
+
+
+.todo-item:hover {
+    background-color: #f1f1f1;
+}
+
+.todo-text {
+    cursor: pointer;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.todo-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 1rem;
+    background-color: #ddd;
+    border-radius: 20px;
+    color: #1a0238;
+}
+
+.save-button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden; /* Ensure border-radius is respected */
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+/* Error Message Styles */
+.error-message {
+    color: rgb(216, 10, 10);
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+.edit-button {
+    height: 40px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #cca83b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden; /* Ensure border-radius is respected */
+    width: 70px;
+}
+
+.edit-button:hover {
+    background-color: #e0a800;
+}
+
+.delete-button {
+    height: 40px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden; /* Ensure border-radius is respected */
+    width: 70px;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
