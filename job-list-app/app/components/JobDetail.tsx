@@ -40,7 +40,7 @@ const categoryColors = [
 
 const JobDetail: React.FC<JobDetailProps> = ({ job }) => {
   return (
-    <div className="container mx-auto px-6 py-10 bg-white rounded-lg shadow-2xl" style={{ maxWidth: '90%' }}>
+    <div className="container mx-auto px-6 py-10 bg-white rounded-lg shadow-2xl" style={{ maxWidth: '90%', paddingTop: '5rem' }}>
       <div className="flex flex-wrap mb-10">
         {/* Job Info Section */}
         <div className="w-full md:w-2/3 pr-6 mb-8 md:mb-0">

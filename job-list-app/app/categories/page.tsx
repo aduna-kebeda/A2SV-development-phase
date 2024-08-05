@@ -78,8 +78,8 @@ const CategoriesPage: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-6 py-8 w-[90%]">
-     <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">Explore Job Categories</h1>
+    <div className="container mx-auto px-6 py-8 w-[90%]" style={{ paddingTop: '4rem' }}>
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">Explore Job Categories</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((category) => (
           <div key={category} className="bg-white shadow-xl rounded-lg p-6 border border-gray-300 hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
