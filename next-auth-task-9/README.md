@@ -15,3 +15,7 @@
 
 # Searching job by title
 ![App Screenshot](Screenshots/Screenshot6.png)
+
+
+# Cypress test
+![App Screenshot](Screenshots/Screenshot7.png)
