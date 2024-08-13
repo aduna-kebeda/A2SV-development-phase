@@ -11,4 +11,3 @@
 
 # Specific detail of job
 ![App Screenshot](Screenshots/Screenshot.png)
-
