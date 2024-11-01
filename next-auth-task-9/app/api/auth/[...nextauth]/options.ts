@@ -60,6 +60,8 @@ export const Options: NextAuthOptions = {
             throw new Error('Login request failed');
           }
 
+
+          
           const user: User | null = response.data.data;
           console.log(user,'addd')
           

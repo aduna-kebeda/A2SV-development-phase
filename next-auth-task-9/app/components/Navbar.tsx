@@ -24,27 +24,30 @@ const Navbar: React.FC = () => {
         <Link href="/" legacyBehavior>
           <a className="text-blue-900 text-2xl font-bold">Job Listings</a>
         </Link>
-        <form onSubmit={handleSearch} className="flex items-center">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search by title..."
-            className="px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="bg-slate-500 text-white px-4 py-2 rounded-full hover:bg-slate-600 transition-colors duration-300"
-          >
-            Search
-          </button>
-        </form>
-    
-        <div className="justify-center text-blue-900 text-2xl font-bold">
-          <Link href={status === 'authenticated' ? '/bookmark' : '/auth/signin'}>
-            Bookmarks
-          </Link>
-        </div>
+        {status === 'authenticated' && (
+          <>
+            <form onSubmit={handleSearch} className="flex items-center">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by title..."
+                className="px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                className="bg-slate-500 text-white px-4 py-2 rounded-full hover:bg-slate-600 transition-colors duration-300"
+              >
+                Search
+              </button>
+            </form>
+            <div className="justify-center text-blue-900 text-2xl font-bold">
+              <Link href="/bookmark">
+                Bookmarks
+              </Link>
+            </div>
+          </>
+        )}
         <div>
           {status === 'authenticated' ? (
             <div onClick={() => signOut()} className="text-blue-900 text-[20px] bg-orange-500 px-7 rounded-full cursor-pointer p-2">
@@ -52,15 +55,13 @@ const Navbar: React.FC = () => {
             </div>
           ) : (
             <div>
-            <Link href="/auth/signin" legacyBehavior>
-              <a className="text-white text-[20px] bg-green-700 px-7 rounded-full cursor-pointer p-2">Login</a>
-            </Link>
-
-            <Link href="/auth/signup" legacyBehavior className='m-2'>
-              <a className="text-white text-[20px] bg-orange-400 hover:bg-orange-500 px-7 rounded-full cursor-pointer p-2">Signup</a>
-            </Link>
+              <Link href="/auth/signin" legacyBehavior>
+                <a className="text-white text-[20px] bg-green-700 px-7 rounded-full cursor-pointer p-2">Login</a>
+              </Link>
+              <Link href="/auth/signup" legacyBehavior className='m-2'>
+                <a className="text-white text-[20px] bg-orange-400 hover:bg-orange-500 px-7 rounded-full cursor-pointer p-2">Signup</a>
+              </Link>
             </div>
-            
           )}
         </div>
       </div>
