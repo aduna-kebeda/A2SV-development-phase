@@ -55,16 +55,21 @@ const initialState: JobsState = {
   error: null,
 };
 
-// Fetch all jobs
-export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async () => {
-  const response = await fetch('https://akil-backend.onrender.com/opportunities/search');
+
+export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async (query: string) => {
+
+  const response = await fetch(`https://akil-backend.onrender.com/opportunities/search?query=${query}`);
+
   if (!response.ok) {
+
     throw new Error('Failed to fetch');
+
   }
+
   const data = await response.json();
+
   return data.data; // Adjust according to the actual API response structure
 });
-
 // Fetch job details by ID
 export const fetchJobDetail = createAsyncThunk('jobs/fetchJobDetail', async (id: string) => {
   const response = await fetch(`https://akil-backend.onrender.com/opportunities/${id}`);
