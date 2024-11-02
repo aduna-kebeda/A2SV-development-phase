@@ -44,6 +44,7 @@ const Signup = () => {
       if (response.status === 200) { // Adjusted to 201 for successful creation
         setMessage("Registration successful! Please verify your email.");
         const verificationUrl = `/auth/verify-email?email=${encodeURIComponent(data.email)}`;
+        console.log(`Navigating to: ${verificationUrl}`); // Log navigation URL
         router.push(verificationUrl); // Redirect to verification page
       } else {
         console.warn("Unexpected response status:", response.status); // Log unexpected status

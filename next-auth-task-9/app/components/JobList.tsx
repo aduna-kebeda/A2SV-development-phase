@@ -3,13 +3,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { RootState ,AppDispatch} from '../store';
 import { fetchJobs } from '../store/jobSlice';
 import JobCard from './JobCard';
 import { useSession } from 'next-auth/react';
 
 const JobList: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const { jobs, loading, error } = useSelector((state: RootState) => state.jobs);
   const [bookmarked, setBookmarked] = useState<string[]>([]);
   const { data,status: session } = useSession(); // Ensure session is fully loaded
@@ -42,7 +42,8 @@ const JobList: React.FC = () => {
   }, [token]);
 
   useEffect(() => {
-    dispatch(fetchJobs());
+    const word = ''
+    dispatch(fetchJobs(word));
   }, [dispatch]);
 console.log(bookmarked,'token2')
   if (loading) return <div className="text-center py-4 text-lg">Loading...</div>;

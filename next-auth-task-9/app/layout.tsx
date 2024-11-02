@@ -9,7 +9,7 @@ import store from './store';
 import Navbar from './components/Navbar';
 import AuthProvider from './authProvider/authProvider';
 
-export default function RootLayout({ children, session }: { children: React.ReactNode, session: any }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>

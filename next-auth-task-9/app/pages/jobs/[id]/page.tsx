@@ -3,12 +3,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'next/navigation';
-import { RootState } from '../../../store'; // Ensure the correct path to your store
+import { RootState,AppDispatch } from '../../../store'; // Ensure the correct path to your store
 import { fetchJobDetail } from '../../../store/jobSlice';
 
 const JobDetail: React.FC = () => {
-  const { id } = useParams();
-  const dispatch = useDispatch();
+  const { id } = useParams() as { id: string };
+  const dispatch: AppDispatch = useDispatch();
+  
   const { jobDetail, loading, error } = useSelector((state: RootState) => state.jobs);
   console.log('myid' ,id);
   useEffect(() => {
@@ -23,7 +24,7 @@ const JobDetail: React.FC = () => {
   if (!jobDetail) return <div className="text-center py-4 text-lg">Job not found.</div>;
 
   const { idealCandidate, about, logoUrl, title, orgName, description, responsibilities, whenAndWhere, categories, requiredSkills, startDate, endDate, deadline, location } = jobDetail;
-  const { posted_on } = about || {};
+  const posted_on = Date.now()-10*6
 
   return (
     <div className="mt-10 container mx-auto px-6 py-10 bg-white rounded-lg shadow-2xl" style={{ maxWidth: '90%' }}>
@@ -56,7 +57,7 @@ const JobDetail: React.FC = () => {
           </div>
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-blue-800 mb-4">Ideal Candidate:</h2>
-            <p>{idealCandidate}</p>
+            <p>{idealCandidate.toString()}</p>
           </div>
           <div>
             <h2 className="text-2xl font-semibold text-blue-800 mb-4">When & Where:</h2>

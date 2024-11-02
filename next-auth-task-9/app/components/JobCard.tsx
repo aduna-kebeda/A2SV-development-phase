@@ -83,7 +83,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, bookmarked, token }) => {
             </div>
           </div>
           <img
-            ty
+            
             src={isBookmarked ? "/assets/bookmark.png" : "/assets/unbookmarked.png"}
             onClick={handleToggle}
             alt="Bookmark"

@@ -2,18 +2,45 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from 'axios';
-console.log('Google Client ID:', process.env.GOOGLE_CLIENT_ID);
+
 interface Credentials {
   email: string;
   password: string;
 }
 
-interface User {
+interface CustomUser {
   id: string;
   email: string;
   role: string;
   name?: string;
   accessToken?: string;
+}
+
+// Extend the User type in next-auth to include role
+declare module "next-auth" {
+  interface User extends CustomUser {}
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string;
+    email?: string;
+    role?: string;
+    name?: string;
+    accessToken?: string;
+  }
+}
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id?: string;
+      email?: string;
+      role?: string;
+      name?: string;
+      accessToken?: string;
+    };
+  }
 }
 
 export const Options: NextAuthOptions = {
@@ -25,50 +52,35 @@ export const Options: NextAuthOptions = {
         timeout: 10000,
       },
       profile(profile) {
-        // console.log
         return {
-          ...profile,
           id: profile.sub,
-          role: "Google User",
+          email: profile.email,
           name: profile.name,
+          role: "Google User",
         };
       },
     }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: {
-          label: "Email Address",
-          type: "text",
-          placeholder: "Enter email address",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "Enter password",
-        },
+        email: { label: "Email Address", type: "text", placeholder: "Enter email address" },
+        password: { label: "Password", type: "password", placeholder: "Enter password" },
       },
-      async authorize(credentials: Credentials | undefined): Promise<User | null> {
-        console.log(111,credentials)
+      async authorize(credentials: Credentials | undefined): Promise<CustomUser | null> {
         if (!credentials) return null;
         try {
           const response = await axios.post("https://akil-backend.onrender.com/login", credentials, {
             headers: { "Content-Type": "application/json" },
           });
-          console.log(2222,response)
+
           if (response.status !== 200) {
             throw new Error('Login request failed');
           }
 
-
-          
-          const user: User | null = response.data.data;
-          console.log(user,'addd')
-          
+          const user: CustomUser | null = response.data.data;
           if (user) {
             return user;
           }
-
           return null;
         } catch (error) {
           console.error('Error during login:', error);
@@ -96,10 +108,10 @@ export const Options: NextAuthOptions = {
     },
     async session({ session, token }) {
       session.user.id = token.id;
-      session.user.role = token.role;
-      session.user.accessToken = token.accessToken;
       session.user.email = token.email;
+      session.user.role = token.role;
       session.user.name = token.name;
+      session.user.accessToken = token.accessToken;
       return session;
     },
   },

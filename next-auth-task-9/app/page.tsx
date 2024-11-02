@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 const Home = () => {
   const { data: session, status } = useSession();
-  console.log(session?.user?.token,1111);
+  console.log(session?.user?.accessToken,1111);
   console.log(session);
   return (
     <Provider store={store}>

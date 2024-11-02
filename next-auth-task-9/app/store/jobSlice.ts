@@ -40,6 +40,7 @@ interface Job {
 }
 
 interface JobsState {
+  status: any;
   jobs: Job[];
   jobDetail: Job | null;
   searchResults: Job[]; // Add this line
@@ -53,6 +54,7 @@ const initialState: JobsState = {
   searchResults: [], // Initialize search results
   loading: false,
   error: null,
+  status: undefined
 };
 
 

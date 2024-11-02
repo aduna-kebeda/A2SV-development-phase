@@ -3,14 +3,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { AppDispatch, RootState } from '../store';
 import { fetchJobs } from '../store/jobSlice';
 import JobCard from '../components/JobCard';
 import { useSession } from 'next-auth/react';
 
 const JobList: React.FC = () => {
     const  book = true;
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const { jobs, loading, error } = useSelector((state: RootState) => state.jobs);
   const [bookmarked, setBookmarked] = useState<string[]>([]);
   const { data,status: session } = useSession(); // Ensure session is fully loaded
@@ -45,8 +45,9 @@ const JobList: React.FC = () => {
   }, [token]);
 
   useEffect(() => {
-    dispatch(fetchJobs());
-  }, [dispatch]);
+      const word = ''; // Define a valid string argument
+      dispatch(fetchJobs(word));
+    }, [dispatch]);
 
   if (loading) return <div className="text-center py-4 text-lg">Loading...</div>;
   if (error) return <div className="text-center py-4 text-lg text-red-500">Error: {error}</div>;
@@ -60,7 +61,7 @@ const JobList: React.FC = () => {
       <div className="space-y-6">
       {jobs.map((job) => (
   bookmarked.includes(job.id) ? (
-    <JobCard key={job.id} job={job} bookmarked={true} />
+    <JobCard key={job.id} job={job} bookmarked={true} token={token} />
   ) : null
 ))}
 

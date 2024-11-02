@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const EmailVerification = () => {
   const [otp, setOtp] = useState(['', '', '', '']);
@@ -10,8 +10,7 @@ const EmailVerification = () => {
   const [timer, setTimer] = useState(30);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get('email');
+  const email = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('email') : '';
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
@@ -139,7 +138,9 @@ const EmailVerification = () => {
                 className="mt-1 p-3 border border-blue-900 rounded-lg w-16 text-center"
                 required 
                 placeholder='0'
-                ref={(el) => (inputRefs.current[index] = el)}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 onClick={() => handleClick(index)}
               />
             ))}
@@ -166,5 +167,6 @@ const EmailVerification = () => {
     </div>
   );
 };
+
 
 export default EmailVerification;

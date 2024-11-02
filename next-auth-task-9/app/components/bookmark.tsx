@@ -27,7 +27,7 @@ interface JobCardProps {
 const JobCard: React.FC<JobCardProps> = ({ job, bookmarked }) => {
   const [isBookmarked, setIsBookmarked] = useState(bookmarked);
   const { data: session } = useSession();
-  const token = session?.accessToken;
+  const token = session.user.accessToken; // Adjust this line based on where the token is actually stored in your session object
 
   async function handleToggle(event: React.MouseEvent<HTMLImageElement, MouseEvent>) {
     event.preventDefault();

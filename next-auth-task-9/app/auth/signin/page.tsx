@@ -6,8 +6,6 @@ import { signIn } from 'next-auth/react';
 
 const SignIn = () => {
   const { status, data: session } = useSession();
-  // console.log("Session:", );
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
